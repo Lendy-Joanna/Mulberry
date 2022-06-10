@@ -11,7 +11,7 @@ const { roles } = require('../config/roles.js');
 const utils = require('../middleware/utils');
 const titles = require('../config/titles');
 const moment = require('moment');
-const cliente = require('./clienteController');
+const Cliente = require('./ClienteController');
 
 function hashPassword(password) {
     return bcrypt.hashSync(password, 10);
