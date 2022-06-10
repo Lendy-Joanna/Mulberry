@@ -7,11 +7,11 @@ const async = require('async');
 const crypto = require('crypto');
 const { constants } = require('buffer');
 const UsuarioModel = require('../models/UsuarioModel');
-const { roles } = require('../config/roles');
+const { roles } = require('../config/roles.js');
 const utils = require('../middleware/utils');
 const titles = require('../config/titles');
 const moment = require('moment');
-const EstudianteController = require('./EstudianteController');
+const cliente = require('./clienteController');
 
 function hashPassword(password) {
     return bcrypt.hashSync(password, 10);
@@ -83,17 +83,17 @@ module.exports = {
 
                     UsuarioModel.findByIdAndUpdate(user._id, { accessToken });
 
-                    if (user.role === 'estudiante') {
+                    if (user.role === 'cliente') {
                         console.log('Login UsuarioController');
                         req.session.usuario = user;
                         res.redirect('/welcome');
-                    } else if (user.role === 'docente') {
-                        // Agrega código vista  docente
+                    } else if (user.role === 'proveedor') {
+                        // Agrega código vista  proveedor
                         req.session.usuario = user;
-                        res.redirect('/docente/tableroDocente');
+                        res.redirect('/proveedor/tableroProveedor');
                     } else if (user.role === 'admin') {
                         req.session.usuario = user;
-                        res.redirect('/admin');
+                        res.redirect('/admin/tableroAdmin');
                     }
                 }
             });
@@ -107,26 +107,8 @@ module.exports = {
     indexView(req, res) {
         res.render('../views/index', { title: titles.view.home });
     },
-    comprarView(req, res) {
-        res.render('../views/pruebas/comprar', { title: titles.view.home });
-    },
-    contactoView(req, res) {
-        res.render('../views/pruebas/contacto', { title: titles.view.home });
-    },
-    nosotrosView(req, res) {
-        res.render('../views/pruebas/nosotros', { title: titles.view.home });
-    },
-    dulcesView(req, res) {
-        res.render('../views/pruebas/dulces', { title: titles.view.home });
-    },
-    pinatasView(req, res) {
-        res.render('../views/pruebas/piñatas', { title: titles.view.home });
-    },
-    globosView(req, res) {
-        res.render('../views/pruebas/globos', { title: titles.view.home });
-    },
     errorView(req, res) {
-        res.render('../views/pruebas/error', { title: titles.view.home });
+        res.render('../views/error', { title: titles.view.home });
     },
     
     /*Aquí terminan sus rutas*/
@@ -194,13 +176,11 @@ module.exports = {
             nombre: req.body.nombre,
             appPaterno: req.body.appPaterno,
             appMaterno: req.body.appMaterno,
-            curp: req.body.curp,
             edad: req.body.edad,
             rutaFoto: req.body.rutaFoto,
             email: req.body.email,
             estado: false,
             contrasena: req.body.contrasena,
-            nivelEducativo: req.body.nivelEducativo,
             role: req.body.role,
             fechaIngreso: new Date(),
             token: '',
@@ -232,7 +212,7 @@ module.exports = {
                     console.log(newUser);
                     newUser.save();
                     
-                    if (newUser.role === 'estudiante') {
+                    if (newUser.role === 'comprador') {
                         async.waterfall([
                             function (done) {
                                 crypto.randomBytes(3, (err, buf) => {
@@ -247,8 +227,8 @@ module.exports = {
                                     port: 465,
                                     secure: true, // true for 465, false for other ports
                                     auth: {
-                                        user: 'lendyjo2001@gmail.com', // generated ethereal user
-                                        pass: 'gumball123', // generated ethereal password
+                                        user: 'correo electrónico de prueba', // generated ethereal user
+                                        pass: 'contraseña', // generated ethereal password
                                     },
                                     tls: {
                                         // do not fail on invalid certs
@@ -256,7 +236,7 @@ module.exports = {
                                      }
                                 });
                                 const info = await transporter.sendMail({
-                                    from: '"Zona Cero " <lendyjo2001@gmail.com>', // sender address
+                                    from: '"mulberry " <correo electrónico de prueba>', // sender address
                                     to: newUser.email, // list of receivers
                                     subject: 'Confirmar cuenta', // Subject line
                                     text: '', // plain text body
@@ -288,7 +268,7 @@ module.exports = {
                             
                         ]);
                     }
-                    if (newUser.role === 'docente') {
+                    if (newUser.role === 'proveedor') {
                         
                         newUser.estado = true;
                         newUser.confirmar = 'si';
