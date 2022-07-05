@@ -1,0 +1,130 @@
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <i class="fa fa-book"></i>
+      Course Online
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Funcionalidades
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/periodos">
+              <i class="fa fa-calendar-alt"></i>
+              Periodos
+            </a>
+            <div class="dropdown-divider"></div>
+             <a class="dropdown-item" href="/admin/admin/adocente">
+              <i class="fa fa-user"></i>
+              Docentes
+            </a>
+            <div class="dropdown-divider"></div>
+             <a class="dropdown-item" href="/admin/admin/listEspecialidad">
+              <i class="fa fa-book"></i>
+              Especialidades
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="admin/admin/Crea_Asignatura">
+              <i class="fa fa-books"></i>
+              Asignaturas
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/admin/estadisticas">
+              <i class="fa fa-chart-bar"></i>
+              Rendimiento
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/admin/institucion">
+              <i class="fa fa-chart-bar"></i>
+              Instituciones
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/ajustes">
+              <i class="fa fa-cog"></i>
+              Ajustes
+            </a>
+          </div>
+        </li>
+        {{!-- Notificaciones --}}
+        <div class="modal-footer">
+          <div class="btn-group">
+            <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{#if notificacion}}
+              <span class="num-not">{{notificacion.length}}</span>
+              {{/if}}
+              <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-bell-fill"
+                viewBox="0 0 16 16">
+                <path
+                  d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z" />
+              </svg>
+            </a><!-- Menu desplegable -->
+            <div class="dropdown-menu" id="dropdown-menu-n" aria-labelledby="dropdownMenuLink">
+              <p id="t-e"> Notificaciones</p>
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                class="bi bi-plus-circle" data-toggle="modal" data-target="#crearNotificacion">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                <path
+                  d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+              </svg>
+              <hr>
+              {{#if notificacion}}
+              {{#each notificacion}}
+              <div class="row media">
+                <!-- notificaciones -->
+                <div class="col-2">
+                  <a href="/cambiarVistNot/{{this._id}}"> <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                      fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                      <path
+                        d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                      <path
+                        d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                    </svg></a>
+                </div>
+                <div class="col media_body">
+                  <p id="t-e" class="nombre">{{this.cvUsuarioCrea}}
+                    <br><span id="t-e">{{this.fecha}}</span>
+                  </p>
+                </div>
+                <div class="col media_body">
+
+                  <p id="t-e" class="contenido">{{this.contenidoNotificacion}}</p>
+
+                </div>
+              </div>
+              <hr>
+              {{/each}}
+              {{else}}
+              <span id="t-e">Sin notificaciones</span>
+              {{/if}}
+
+            </div>
+          </div>
+        </div>
+        <li class="nav-item">
+          {{!-- Dropdown --}}
+        <div class="dropdown show">
+            <a class="btn btn-warning dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor"
+                    class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                    <path fill-rule="evenodd"
+                        d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                </svg>Hola {{nombre}}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="/logout">Cerrar sesión</a>
+            </div>
+        </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

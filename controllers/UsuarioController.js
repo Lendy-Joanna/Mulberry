@@ -11,7 +11,7 @@ const { roles } = require('../config/roles.js');
 const utils = require('../middleware/utils');
 const titles = require('../config/titles');
 const moment = require('moment');
-const Cliente = require('./ClienteController');
+//const Cliente = require('./ClienteController');
 
 function hashPassword(password) {
     return bcrypt.hashSync(password, 10);
@@ -83,14 +83,14 @@ module.exports = {
 
                     UsuarioModel.findByIdAndUpdate(user._id, { accessToken });
 
-                    if (user.role === 'cliente') {
+                    if (user.role === 'mujer') {
                         console.log('Login UsuarioController');
                         req.session.usuario = user;
                         res.redirect('/welcome');
-                    } else if (user.role === 'proveedor') {
-                        // Agrega código vista  proveedor
+                    } else if (user.role === 'hombre') {
+                        // Agrega código vista  hombre
                         req.session.usuario = user;
-                        res.redirect('/proveedor/tableroProveedor');
+                        res.redirect('/hombre/tableroHombre');
                     } else if (user.role === 'admin') {
                         req.session.usuario = user;
                         res.redirect('/admin/tableroAdmin');
@@ -99,20 +99,18 @@ module.exports = {
             });
         }
     },
-
-
-    /*
-    Controlador para proyecto alternativo
-    */
     indexView(req, res) {
-        res.render('../views/index', { title: titles.view.home });
+        res.render('../views/index', { title: titles.view.index });
     },
-    errorView(req, res) {
-        res.render('../views/error', { title: titles.view.home });
+    politicas(req, res) {
+        res.render('../views/generales/politicas', { title: titles.view.politicas });
     },
-    
-    /*Aquí terminan sus rutas*/
-
+    nosotros(req, res) {
+        res.render('../views/generales/nosotros', { title: titles.view.nosotros });
+    },
+    contacto(req, res) {
+        res.render('../views/generales/contacto', { title: titles.view.contacto });
+    },
     registroView(req, res) {
         res.render('../views/usuario/registro', { title: titles.view.home });
     },
@@ -212,7 +210,7 @@ module.exports = {
                     console.log(newUser);
                     newUser.save();
                     
-                    if (newUser.role === 'comprador') {
+                    if (newUser.role === 'mujer') {
                         async.waterfall([
                             function (done) {
                                 crypto.randomBytes(3, (err, buf) => {
@@ -227,8 +225,9 @@ module.exports = {
                                     port: 465,
                                     secure: true, // true for 465, false for other ports
                                     auth: {
-                                        user: 'correo electrónico de prueba', // generated ethereal user
-                                        pass: 'contraseña', // generated ethereal password
+                                        type: "OAuth2",
+                                        user: "yorunohana0102@gmail.com",
+                                        accessToken: "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",
                                     },
                                     tls: {
                                         // do not fail on invalid certs
@@ -236,7 +235,7 @@ module.exports = {
                                      }
                                 });
                                 const info = await transporter.sendMail({
-                                    from: '"mulberry " <correo electrónico de prueba>', // sender address
+                                    from: '"Mulberry " <yorunohana0102@gmail.com>', // sender address
                                     to: newUser.email, // list of receivers
                                     subject: 'Confirmar cuenta', // Subject line
                                     text: '', // plain text body
@@ -268,7 +267,7 @@ module.exports = {
                             
                         ]);
                     }
-                    if (newUser.role === 'proveedor') {
+                    if (newUser.role === 'hombre') {
                         
                         newUser.estado = true;
                         newUser.confirmar = 'si';

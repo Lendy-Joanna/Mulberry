@@ -1,0 +1,52 @@
+{{> header}}
+{{> navregis}}
+
+<section class="hero hero-bg d-flex justify-content-center align-items-center">
+	
+	<div class="container">
+{{#if mensaje}}
+	<div class="alert alert-danger alert-dismissible fade show" role="alert">
+		{{mensaje}}
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	{{/if}}
+		<div class="row">
+
+			<div class="container">
+
+				<div class="d-flex justify-content-center h-100">
+
+					<div class="card-group" style="background-color: rgba(0, 0, 0, 0.337);">
+						<div class="card-header">
+							<h3 class="text-white text-center card-title">Confirmar Registro</h3>
+						</div>
+
+						<div class="card-body">
+							<form action="/confirmar" method="post">
+								<label for="token" style="color: white;">Revisa tu correo eléctronico y busca el 
+									correo con tu código de activación.</label><br><br>
+								<label for="token" style="color: white;">Código de activación</label>
+
+								<div class="input-group form-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text"><i class="fa fa-key"></i></span>
+									</div>
+									<input type="text" class="form-control" name="token" id="token"
+										placeholder="Ingresa código de activación">
+								</div>
+
+								<div class="form-group">
+									<button type="submit" class="btn float-right btn-success ">Aceptar</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+

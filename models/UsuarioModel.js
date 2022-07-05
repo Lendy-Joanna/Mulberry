@@ -32,18 +32,6 @@ const usuarioSchema = new Schema({
         maxLength: [100, 'El máximo de carácteres requeridos son 100'],
         lowercase: true,
     },
-    curp: {
-        type: String,
-        required: [true, 'La CURP es requerida'],
-        minLength: [16, 'El mínimo de carácteres requeridos son 16'],
-        maxLength: [18, 'El máximo de carácteres requeridos son 18'],
-    },
-    edad: {
-        type: Number,
-        required: [true, 'La edad es requerida'],
-        minLength: [2, 'La edad mínima es 12'],
-        maxLength: [2, 'La edad máxima es 99'],
-    },
     rutaFoto: {
         type: String,
         default: '',
@@ -57,11 +45,6 @@ const usuarioSchema = new Schema({
     },
     contrasena: {
         type: String,
-    },
-    nivelEducativo: {
-        type: String,
-        lowercase: true,
-        required: [true, 'El Nivel Educativo es requerido'],
     },
     fechaIngreso: {
         type: Date,
@@ -83,8 +66,8 @@ const usuarioSchema = new Schema({
     role: {
         type: String,
         lowercase: true,
-        default: 'estudiante',
-        enum: ['estudiante', 'docente', 'admin'],
+        default: 'mujer',
+        enum: ['mujer', 'hombre', 'admin'],
     },
     resetPasswordToken: {
         type: String, required: false,

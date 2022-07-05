@@ -1,0 +1,481 @@
+/*body {
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+*/
+a {
+  color: #00B7FF;
+}
+
+input:invalid {
+  background-color: pink;
+}
+
+input:required:invalid {
+  border-color: #C00000;
+}
+
+
+/*Estilo para errores*/
+
+.info,
+.success,
+.warning,
+.error,
+.validation {
+  border: 1px solid;
+  border-radius: 5px;
+  margin: 5px auto;
+  padding: 2px 2px 2px 10px;
+  background-repeat: no-repeat;
+  background-position: 5px center;
+  max-width: 460px;
+}
+
+.error {
+  color: #D8000C;
+  background-color: white;
+}
+
+.error:before {
+  font-family: FontAwesome;
+  font-size: 24px;
+  color: #D8000C;
+}
+
+.validation {
+  color: #D63301;
+  background-color: #FFCCBA;
+  background-image: url('https://i.imgur.com/GnyDvKN.png');
+}
+
+.warning {
+  color: #9F6000;
+  background-color: #FEEFB3;
+  background-image: url('https://i.imgur.com/Z8q7ww7.png');
+}
+
+.info {
+  color: #00529B;
+  background-color: #BDE5F8;
+  background-image: url('https://i.imgur.com/ilgqWuX.png');
+}
+
+.success {
+  color: #4F8A10;
+  background-color: #DFF2BF;
+  background-image: url('https://i.imgur.com/Q9BGTuy.png');
+}
+
+/*VER CURSO STYLE*/
+.card-header-entregado{
+width: 90%;
+margin: auto;
+margin-top: -25px;
+
+height: 120px;
+background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(11,158,20,0.546673703661152) 34%, rgba(245,255,0,1) 100%);
+}
+.card-header-noentregado{
+width: 90%;
+margin: auto;
+margin-top: -25px;
+height: 120px;
+background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(7,96,135,0.5889706224286589) 23%, rgba(0,212,255,1) 100%);
+
+}
+
+.my-card{
+  width: auto;
+  height: auto !important;
+}
+
+.my-icon{
+  height: auto;
+margin-top: 30px;
+}
+
+.icons{
+  font-size: 80px;
+color: white;
+}
+.icons:hover{
+  font-size: 80px ;
+  color: #FFC312 !important;
+text-decoration: none!important;
+}
+.titulo-card-body{
+font-size: 12px;
+color: goldenrod;
+
+
+}
+.texto-card-body{
+font-size: 17px;
+color: white;
+
+}
+.verC-progress{
+  height: 40px!important;
+}
+/*Ver Curso*/
+/*Estilo de tarjetas de practica*/
+
+.middle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.tarjeta {
+  cursor: pointer;
+  width: 340px;
+  height: 480px;
+}
+
+.front, .back {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  backface-visibility: hidden;
+  position: absolute;
+  transition: transform .6s linear;
+}
+
+.front h1 {
+  text-align: center;
+}
+
+.front h3 {
+  text-align: center;
+}
+
+.front {
+  background: #f1f1f1;
+  transform: perspective(600px) rotateY(0deg);
+}
+
+.back {
+  background: #f1f1f1;
+  transform: perspective(600px) rotateY(180deg);
+}
+
+.back-content {
+  text-align: center;
+  width: 100%;
+}
+
+.tarjeta:hover>.front {
+  transform: perspective(600px) rotateY(-180deg);
+}
+
+.tarjeta:hover>.back {
+  transform: perspective(600px) rotateY(0deg);
+}
+
+.inst{
+  width: auto;
+  height: auto;
+  background-color: white !important;
+}
+
+/* Estos son los estilos de alejandro */
+#pre_exa{
+  background-color: white;
+  border-radius: 10pt; 
+   border:black 4px solid; 
+}
+
+#h4-pre{
+  font-size: smaller;
+  color: gray;
+}
+
+.trans{
+  width: 400px;
+  justify-content: center;
+}
+
+/* Estilos para actividad */
+#tab_act{  
+  background-color: #5e8a74; 
+}
+#t-e{
+    color:  rgb(221, 239, 241);;
+}
+#act{
+  color:  rgb(0, 26, 29);
+
+}
+ #cont-act{
+  background-color: whitesmoke;
+  border-radius: 10pt;
+  border: 1px solid gray ;
+
+} 
+
+#tex-act{
+background-color: lavender;
+}
+.form_comentarios textarea{
+  width: 100%;
+  height: 80px;
+  max-width: 100%;
+  min-width: 100%;
+  min-height: 80px;
+  max-height: 300px;
+  padding: 10px;
+ 
+}
+.media{
+    
+    padding-top: 20px;
+}
+.media .nombre{
+    color: black;
+    margin-bottom: 0;
+}
+
+.media .nombre span{
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+/*
+Estilos para Notificaciones
+*/
+.modal-footer .btn-group a .bi-bell-fill{
+  fill: #007bff;
+}
+.modal-footer .btn-group a .bi-bell-fill:hover{
+fill: tomato;
+
+} 
+.bi-plus-circle{
+fill: #FFC312;
+
+}
+.bi-plus-circle:hover{
+fill: #4F8A10;
+
+}
+.bi-eye{
+fill: #FFC312;
+}
+.bi-eye:hover{
+fill: #4F8A10;
+align-content: flex-end;
+}
+/*
+Scroll Personalizado para Notificaciones
+*/
+
+#dropdown-menu-n::-webkit-scrollbar {
+width: 6px;
+}
+
+#dropdown-menu-n::-webkit-scrollbar-thumb {
+background: #FFC312;
+border-radius: 5px;
+}
+#dropdown-menu-n {
+height: 300px;
+  width: 400px;
+margin: 20px auto;
+padding: 20px;
+background: #171819 ;
+overflow: auto;
+font-family: 'Open Sans';
+border-radius: 4px;
+}
+
+
+#dropdown-menu-n hr {
+background: #FFC312;
+width: auto;
+height: auto;
+border-radius: 50px;
+}
+.num-not{
+  width: 25px ;
+  height: 25px ;
+  position: absolute;
+  border-radius: 50%;
+  background-color: tomato;
+  color: white;
+  transform: translate(-30%, 50%);
+  padding-left:  10px;
+  padding-top: 14%;
+  font-size: 12px;
+  font-family: fantasy;
+}
+
+/*Estilos Acivar/Desactivar Docentes y Administración Especialidad*/
+/*Inicio*/
+#ADD header .header{
+  position: sticky;
+  top: 0;
+}
+
+#ADD header h1{
+  background-color: #0c8095;
+  color: white;
+  font: 10px;
+}
+
+#ADD header hr{
+  border: 1px solid transparent;
+}
+
+#ADD #ADS footer .site-footer{
+  position: sticky;
+  bottom: 0;
+}
+
+#ADD #ADS{
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  max-width: 1000px;
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+#ADS a{
+  color: #00B7FF;
+}
+
+#ADS header{
+   color: black;
+   text-align: center;
+}
+
+#ADS hr{
+  border: 1px solid gray;
+}
+
+#ADD header{
+  text-align: center;
+}
+
+#ADD {		
+  background: rgb(5,122,140);
+  background: linear-gradient(165deg, rgba(5,122,140,1) 50%, rgba(255,255,255,0.23878205128205132) 50%);
+}
+
+#ADD #ADS th{
+  text-align: right;
+}
+
+#ADD #ADS p{
+  color: white;
+}
+
+#ADD #ADS div .row {
+    min-width: 30%;
+        margin: 40px 20px 20px 0;
+        height: 100%;
+        background: #1D2F3D;
+        padding: 20px;
+        border-radius: 3px;
+        color: #F2F2F2;
+}
+
+#ADD #ADS .row h1{
+  text-align: center;
+  background: #0c8095;
+  color: white;
+}
+
+#ADD #ADDS #agregar form{
+  font-size: large;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 150px;
+  padding-right: 150px;
+  background-color: black;
+  text-align: left;
+  color: antiquewhite;
+}
+
+#ADD #ADDS h1 {
+  text-align: center;
+  background: #0c8095;
+  color: white;
+}
+/*Final*/
+
+
+/*Vista de agregar asignatura*/
+/*Inicio*/
+
+#AdminAsig {
+  background: rgb(5,122,140);
+  background: linear-gradient(165deg, rgba(5,122,140,1) 50%, rgba(255,255,255,0.23878205128205132) 50%);
+}
+    
+#AdminAsig header h1{
+  background-color: #0c8095;
+  color: white;
+  font: 10px;
+}
+    
+#AdminAsig header hr{
+  border: 1px solid transparent;
+}
+
+         
+#AdminAsig #FormAsig{
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  max-width: 1000px;
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+      
+#AdminAsig #FormAsig a{
+  color: #00B7FF;
+}
+    
+#AdminAsig #tablaAsig header{
+   color: black;
+   text-align: center;
+}
+                   
+#AdminAsig #FormAsig hr{
+  border: 1px solid gray;
+}
+    
+#AdminAsig header{
+  text-align: center;
+}
+
+              
+#AdminAsig #FormAsig p{
+  color: white;
+}
+
+         
+#AdminAsig #FormAsig div .row {
+    min-width: 30%;
+    margin: 40px 20px 20px 0;	
+    height: 100%;	
+    background: #1D2F3D;	
+    padding: 20px;	
+    border-radius: 3px;	
+    color: #F2F2F2;	
+}
+ 
+#AdminAsig #FormAsig .row h1{
+  text-align: center;
+  background: #0c8095;
+  color: white;
+}
+
+/* fin */
