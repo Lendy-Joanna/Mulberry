@@ -197,7 +197,7 @@ module.exports = {
         } else {
             UsuarioModel.findOne({ email: newUser.email }).exec((err, user) => {
                 if (user != null) {
-                    res.render('../views/usuario/registro', { mensaje: 'El email ya está registrado' });
+                    res.render('../views/usuario/registro', { mensaje: [{msg: 'El email ya está registrado' }] });
                 } else {
                     const hashedPassword = hashPassword(req.body.contrasena);
                     newUser.contrasena = hashedPassword;
