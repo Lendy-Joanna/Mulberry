@@ -2,7 +2,14 @@ const { validationResult } = require('express-validator');
 const async = require('async');
 const crypto = require('crypto');
 const bcrypt = require('bcrypt');
+//Configuraciones para el envío de correo
 const nodemailer = require('nodemailer');
+const { google } = require('googleapis');
+const config = require('../config.js');
+const OAuth2 = google.auth.OAuth2;
+const OAuth2_client = new OAuth2(config.clientId, config.clientSecret);
+OAuth2_client.setCredentials( { refresh_token : config.refreshToken});
+//Extras
 const { NotExtended } = require('http-errors');
 const titles = require('../config/titles');
 const Usuario = require('../models/UsuarioModel');
@@ -55,15 +62,19 @@ usuarioController.recuperarContraseniaToken = (req, res) => {
                 });
             },
             async (token, usuario) => {
+                const accessToken = OAuth2_client.getAccessToken();
                 const transporter = nodemailer.createTransport({
                     host: 'smtp.gmail.com',
                     port: 465,
                     secure: true,
-                        auth: {
-                            type: "OAuth2",
-                            user: "yorunohana0102@gmail.com",
-                            accessToken: "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",
-                        },
+                    auth: {
+                        type: "OAuth2",
+                        user: config.user,
+                        clientId: config.clientId,
+                        clientSecret: config.clientSecret,
+                        refreshToken: config.refreshToken,
+                        accessToken: accessToken,
+                    },
                     tls: {
                         // do not fail on invalid certs
                         rejectUnauthorized: false
@@ -71,7 +82,7 @@ usuarioController.recuperarContraseniaToken = (req, res) => {
                 });
 
                 await transporter.sendMail({
-                    from: '"Mulberry" <yorunohana0102@gmail.com>',
+                    from: `Mulberry <${config.user}>`,
                     to: req.body.email,
                     subject: 'Recuperacion de Contraseña ✔',
                     text: '',

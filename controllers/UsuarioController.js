@@ -1,7 +1,14 @@
 /* eslint-disable no-underscore-dangle */
 const { validationResult, matchedData } = require('express-validator');
-// Dando seguridad a la aplicación
+//Configuraciones para el envío de correo
 const nodemailer = require('nodemailer');
+const { google } = require('googleapis');
+const config = require('../config.js');
+const OAuth2 = google.auth.OAuth2;
+const OAuth2_client = new OAuth2(config.clientId, config.clientSecret);
+OAuth2_client.setCredentials( { refresh_token : config.refreshToken});
+
+// Dando seguridad a la aplicación
 const bcrypt = require('bcrypt');
 const async = require('async');
 const crypto = require('crypto');
@@ -220,14 +227,20 @@ module.exports = {
                                 });
                             },
                             async function main (token, usuario, done) {
+                                const accessToken = OAuth2_client.getAccessToken();
+
                                 const transporter = nodemailer.createTransport({
                                     host: 'smtp.gmail.com',
+                                    service: 'gmail',//esto se agregó
                                     port: 465,
                                     secure: true, // true for 465, false for other ports
                                     auth: {
                                         type: "OAuth2",
-                                        user: "yorunohana0102@gmail.com",
-                                        accessToken: "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",
+                                        user: config.user,
+                                        clientId: config.clientId,
+                                        clientSecret: config.clientSecret,
+                                        refreshToken: config.refreshToken,
+                                        accessToken: accessToken,
                                     },
                                     tls: {
                                         // do not fail on invalid certs
@@ -235,12 +248,12 @@ module.exports = {
                                      }
                                 });
                                 const info = await transporter.sendMail({
-                                    from: '"Mulberry " <yorunohana0102@gmail.com>', // sender address
+                                    from: `'Mulberry${config.user}`, // sender address
                                     to: newUser.email, // list of receivers
                                     subject: 'Confirmar cuenta', // Subject line
                                     text: '', // plain text body
                                     html: `${'<head>'
-                                        + '<title>Alta de cuenta</title>'
+                                        + '<title>Alta de cuenta </title>'
                                         + '</head>'
                                         + '<body>'
                                         + '<h2>Estás a un paso de acceder a una gran cantidad de contenido</h2>'
@@ -250,7 +263,7 @@ module.exports = {
                                         + '<strong style="font-size:200%; border:solid">'}${newUser.token}</strong>`
                                         + '</p>'
                                         + '<p class="card-text"> O bien sigue este link y por favor ingresa el código proporcionado en este correo</p>'
-                                        + '<a href="http://' + req.headers.host + '/confirmarView/' + token + '">Click Aqui</a>'
+                                        + '<a href="http://' + req.headers.host + '/confirmarRegistro/' + token + '">Click Aqui</a>'
                                         + '</body>',
                                 });
 
