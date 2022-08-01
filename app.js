@@ -26,6 +26,7 @@ mongoose.connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology
 
 // Configuración de rutas
 const usuarioRoutes = require('./routes/UsuarioRoutes');
+const mujerRoutes = require('./routes/MujerRoutes');
 const titles = require('./config/titles');
 
 const app = express();
@@ -135,6 +136,7 @@ app.use(async (req, res, next) => {
 });
 
 app.use('/', usuarioRoutes);
+app.use('/', mujerRoutes);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

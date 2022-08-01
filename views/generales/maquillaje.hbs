@@ -1,3 +1,4 @@
+{{> header}}
 <!doctype html>
 <html lang="en">
 
@@ -14,64 +15,21 @@
 
   <!-- JS -->
   <script src="../../main.js"></script>
-
-  <title>NekShop</title>
 </head>
 
 <body>
-  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <img src="../img/logoSite.png" alt="" class=" navbar-brandrounded float-left img-fluid" width="70">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-       <ul class="navbar-nav  ul-list">
-                    <li class="nav-item active">
-                        <a style="text-decoration: underline; color: rgb(14, 14, 14);" class="nav-link "
-                            aria-current="page" href="">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/nosotros">Nosotros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/dulces" tabindex="-1"
-                            aria-disabled="true">Dulces</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/globos" tabindex="-1"
-                            aria-disabled="true">Globos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/pinatas" tabindex="-1"
-                            aria-disabled="true">Piñatas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/contacto" tabindex="-1"
-                            aria-disabled="true">Contacto</a>
-                    </li>
-                    <li>
-                        <form class="d-flex">
-                            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
-                        </form>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/home" tabindex="-1"
-                            aria-disabled="true">Iniciar Sesión</a>
-                    </li>
-                </ul>
-        <br>
-        <br>
-      </div>
-    </div>
-  </nav>
-
   <div class="container-fluid content-box">
     <div class="row">
       <div class="col col-home-introduction">
-
-        <h2>Nuestros Productos</h2>
+        <ul class="breadcrumb" style="background-color: rgba(176, 94, 167, 0);">
+          <li class="breadcrumb-item"><a href="/">
+              <FONT COLOR="white">Inicio</FONT>
+          <li class="breadcrumb-item"><a href="/maquillaje">
+              <FONT COLOR="white">Maquillaje</FONT>
+            </a></li>
+          </a></li>
+        </ul>
+        <h2>Mántente siempre al margen</h2>
       </div>
     </div>
   </div>

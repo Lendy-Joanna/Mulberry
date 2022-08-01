@@ -15,7 +15,12 @@ router.get('/home', usuarioController.home);
 router.post('/login', validationRute.form, usuarioController.login);
 router.get('/politicas', usuarioController.politicas);
 router.get('/nosotros', usuarioController.nosotros);
-router.get('/contacto', usuarioController.contacto);
+router.get('/contacto', usuarioController.contactoView);
+router.get('/maquillaje', usuarioController.maquillajeView);
+router.get('/skincare', usuarioController.skincareView);
+router.get('/manicura', usuarioController.manicuraView);
+router.get('/accesorios', usuarioController.accesoriosView);
+router.get('/comprar', usuarioController.comprarView);
 
 // Rutas para registro
 router.get('/registroView', usuarioController.registroView);
@@ -32,13 +37,6 @@ router.post('/recuperarFinal', validationPass.form, recuperar.recuperarContrasen
 /* Listado de rutas de rol mujer */
 /* Listado de rutas de rol hombre*/
 /* Listado de rutas de rol admin*/
-/*router.get('/comprar', usuarioController.comprarView);
-router.get('/contacto', usuarioController.contactoView);
-router.get('/nosotros', usuarioController.nosotrosView);
-router.get('/dulces', usuarioController.dulcesView);
-router.get('/globos', usuarioController.globosView);
-router.get('/pinatas', usuarioController.pinatasView);
-router.get('/error', usuarioController.errorView);
-*/
+
 
 module.exports = router;

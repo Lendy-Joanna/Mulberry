@@ -18,7 +18,7 @@ const { roles } = require('../config/roles.js');
 const utils = require('../middleware/utils');
 const titles = require('../config/titles');
 const moment = require('moment');
-//const Cliente = require('./ClienteController');
+//const mujer = require('./MujerController');
 
 function hashPassword(password) {
     return bcrypt.hashSync(password, 10);
@@ -115,8 +115,23 @@ module.exports = {
     nosotros(req, res) {
         res.render('../views/generales/nosotros', { title: titles.view.nosotros });
     },
-    contacto(req, res) {
+    contactoView(req, res) {
         res.render('../views/generales/contacto', { title: titles.view.contacto });
+    },
+    maquillajeView(req, res) {
+        res.render('../views/generales/maquillaje', { title: titles.view.maquillaje });
+    },
+    skincareView(req, res) {
+        res.render('../views/generales/skincare', { title: titles.view.skincare });
+    },
+    manicuraView(req, res) {
+        res.render('../views/generales/manicura', { title: titles.view.manicura });
+    },
+    accesoriosView(req, res) {
+        res.render('../views/generales/accesorios', { title: titles.view.accesorios });
+    },
+    comprarView(req, res) {
+        res.render('../views/generales/comprar', { title: titles.view.comprar });
     },
     registroView(req, res) {
         res.render('../views/usuario/registro', { title: titles.view.home });
