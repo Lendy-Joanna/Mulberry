@@ -4,7 +4,7 @@ module.exports = {
         home: 'Ingreso al sistema',
         index: 'Bienvenido',
         politicas: 'Politicas del sistema',
-        nosotros: 'Quienes somos',
+        nosotros: ' somos',
         contacto: 'Contactanos',
         registro: 'Registro de Usuario',
         maquillaje: 'Productos de belleza',

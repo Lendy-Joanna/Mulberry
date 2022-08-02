@@ -16,7 +16,7 @@ module.exports = {
             console.log('Welcome Data Sesión ', user);
             const name = `${utils.capitalize(user.nombre)} ${utils.capitalize(user.appPaterno)} ${utils.capitalize(user.appMaterno)}`;
             res.render('../views/mujer/home', {
-                title: titles.view.home, nombre: name, curso, user, notificacion,
+                title: titles.view.home, nombre: name, user, notificacion,
             });
         } else {
             res.redirect('/');
