@@ -278,7 +278,7 @@ width: 6px;
 }
 
 #dropdown-menu-n::-webkit-scrollbar-thumb {
-background: #FFC312;
+background: #680a9a;
 border-radius: 5px;
 }
 #dropdown-menu-n {
@@ -294,7 +294,7 @@ border-radius: 4px;
 
 
 #dropdown-menu-n hr {
-background: #FFC312;
+background: #bd87bd;
 width: auto;
 height: auto;
 border-radius: 50px;
