@@ -93,7 +93,7 @@ module.exports = {
                     if (user.role === 'mujer') {
                         console.log('Login UsuarioController');
                         req.session.usuario = user;
-                        res.redirect('/welcomem');
+                        res.redirect('/welcome');
                     } else if (user.role === 'hombre') {
                         // Agrega código vista  hombre
                         req.session.usuario = user;
@@ -116,7 +116,7 @@ module.exports = {
         res.render('../views/generales/nosotros', { title: titles.view.nosotros });
     },
     contactoView(req, res) {
-        res.render('../views/generales/contacto', { title: titles.view.contacto });
+        res.render('../views/generales/contac', { title: titles.view.contacto });
     },
     maquillajeView(req, res) {
         res.render('../views/generales/maquillaje', { title: titles.view.maquillaje });
@@ -409,17 +409,22 @@ module.exports = {
         if (!errors.isEmpty()) {
             const errorsMsg = errors.mapped();
             const inputData = req.body;
-            res.render('../views/generales/contacto', {
+            res.render('../views/generales/contac', {
                 mensaje: errorsMsg,
                 inputData,
                 title: titles.view.contacto,
             });
         }else{
-            return res.render('../views/generales/contacto',{
+            console.log(newComent);
+            newComent.save();
+
+            return res.render('../views/generales/contac',{
                 title: titles.view.contacto,
                 mensaje: titles.mensajes.contactoEnviado,
-                email: usuario.email,
+                email: newComent.email,
+                telefono: newComent.telefono,
             });
+
         }
     },
 
