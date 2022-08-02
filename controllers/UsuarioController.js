@@ -93,7 +93,7 @@ module.exports = {
                     if (user.role === 'mujer') {
                         console.log('Login UsuarioController');
                         req.session.usuario = user;
-                        res.redirect('/welcomem');
+                        res.redirect('/welcome');
                     } else if (user.role === 'hombre') {
                         // Agrega código vista  hombre
                         req.session.usuario = user;
