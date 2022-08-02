@@ -1,5 +1,3 @@
-//const EstudianteModel = require('../models/EstudianteModel.js');
-//const CursoModel = require('../models/CursoModel');
 const Notificacion = require('./VerNotificacionesController');
 const titles = require('../config/titles');
 const utils = require('../middleware/utils');
@@ -14,9 +12,9 @@ module.exports = {
             // controlador VerNotificacionesController
             const notificacion = await Notificacion.VerNotificacion(req, res);
             console.log('Welcome Data Sesión ', user);
-            const name = `${utils.capitalize(user.nombre)} ${utils.capitalize(user.appPaterno)} ${utils.capitalize(user.appMaterno)}`;
+            const name = `${utils.capitalize(user.nombre)} ${utils.capitalize(user.appPaterno)}`;
             res.render('../views/mujer/home', {
-                title: titles.view.home, nombre: name, curso, user, notificacion,
+                title: titles.view.home, nombre: name, user, notificacion,
             });
         } else {
             res.redirect('/');
