@@ -7,6 +7,7 @@ const validationRute = require('../middleware/validate-login');
 const validationEmail = require('../middleware/validate-email');
 const validationPass = require('../middleware/validate-contrasenia');
 const validationRegistro = require('../middleware/validate-registro');
+const validationContacto = require('../middleware/validate-contacto');
 
 //Rutas generales para iniciar en el sitio
 router.get('/', usuarioController.indexView);
@@ -16,6 +17,7 @@ router.post('/login', validationRute.form, usuarioController.login);
 router.get('/politicas', usuarioController.politicas);
 router.get('/nosotros', usuarioController.nosotros);
 router.get('/contacto', usuarioController.contactoView);
+router.post('/contactoenv', validationContacto.form, usuarioController.contactoenv);
 router.get('/maquillaje', usuarioController.maquillajeView);
 router.get('/skincare', usuarioController.skincareView);
 router.get('/manicura', usuarioController.manicuraView);

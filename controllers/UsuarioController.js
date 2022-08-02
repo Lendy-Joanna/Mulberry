@@ -14,11 +14,11 @@ const async = require('async');
 const crypto = require('crypto');
 const { constants } = require('buffer');
 const UsuarioModel = require('../models/UsuarioModel');
+const ContactoModel = require('../models/ContactoModel');
 const { roles } = require('../config/roles.js');
 const utils = require('../middleware/utils');
 const titles = require('../config/titles');
 const moment = require('moment');
-//const mujer = require('./MujerController');
 
 function hashPassword(password) {
     return bcrypt.hashSync(password, 10);
@@ -296,13 +296,67 @@ module.exports = {
                         ]);
                     }
                     if (newUser.role === 'hombre') {
-                        
-                        newUser.estado = true;
-                        newUser.confirmar = 'si';
-                        newUser.save();
-                        res.render('../views/home', {
-                            mensaje: 'Cuenta activada',
-                        });
+                        async.waterfall([
+                            function (done) {
+                                crypto.randomBytes(3, (err, buf) => {
+                                    let token = buf.toString('hex');
+                                    token = parseInt(token, 16);
+                                    done(err, token);
+                                });
+                            },
+                            async function main (token, usuario, done) {
+                                const accessToken = OAuth2_client.getAccessToken();
+
+                                const transporter = nodemailer.createTransport({
+                                    host: 'smtp.gmail.com',
+                                    service: 'gmail',//esto se agregó
+                                    port: 465,
+                                    secure: true, // true for 465, false for other ports
+                                    auth: {
+                                        type: "OAuth2",
+                                        user: config.user,
+                                        clientId: config.clientId,
+                                        clientSecret: config.clientSecret,
+                                        refreshToken: config.refreshToken,
+                                        accessToken: accessToken,
+                                    },
+                                    tls: {
+                                        // do not fail on invalid certs
+                                        rejectUnauthorized: false
+                                     }
+                                });
+                                const info = await transporter.sendMail({
+                                    from: `'Mulberry${config.user}`, // sender address
+                                    to: newUser.email, // list of receivers
+                                    subject: 'Confirmar cuenta', // Subject line
+                                    text: '', // plain text body
+                                    html: `${'<head>'
+                                        + '<title>Alta de cuenta </title>'
+                                        + '</head>'
+                                        + '<body>'
+                                        + '<h2>Estás a un paso de acceder a una gran cantidad de contenido</h2>'
+                                        + '<p> Por favor, ingresa el siguiente código para poder activar tu cuenta.</p>'
+                                        + '<h3>Código de confirmación:</h3><br>'
+                                        + '<p>'
+                                        + '<strong style="font-size:200%; border:solid">'}${newUser.token}</strong>`
+                                        + '</p>'
+                                        + '<p class="card-text"> O bien sigue este link y por favor ingresa el código proporcionado en este correo</p>'
+                                        + '<a href="http://' + req.headers.host + '/confirmarRegistro/' + token + '">Click Aqui</a>'
+                                        + '</body>',
+                                });
+
+                                console.log('Message sent: %s', info.messageId);
+                                res.render('../views/usuario/confirmarRegistro',
+                                    {
+                                        title: titles.view.confirmarRegistro,
+                                        mensaje: titles.mensajes.correoEnviado,
+                                        us: usuario,
+                                        email: newUser.email,
+                                        token: newUser.token,
+                                    });
+                            },
+                            
+                        ]);
                     }
                 }
             });
@@ -341,4 +395,32 @@ module.exports = {
         req.session.destroy();
         res.render('home', { title: titles.view.home });
     },
+    
+    contactoenv(req, res) {
+        const errors = validationResult(req);
+
+        const newComent = new ContactoModel({
+            email: req.body.email,
+            telefono: req.body.telefono,
+            asunto: req.body.asunto,
+            mensaje: req.body.mensaje,
+        });
+
+        if (!errors.isEmpty()) {
+            const errorsMsg = errors.mapped();
+            const inputData = req.body;
+            res.render('../views/generales/contacto', {
+                mensaje: errorsMsg,
+                inputData,
+                title: titles.view.contacto,
+            });
+        }else{
+            return res.render('../views/generales/contacto',{
+                title: titles.view.contacto,
+                mensaje: titles.mensajes.contactoEnviado,
+                email: usuario.email,
+            });
+        }
+    },
+
 };
