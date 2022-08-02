@@ -1,4 +1,4 @@
-{{> navregis}}
+{{> header}}
 
 <section class="hero hero-bg d-flex justify-content-center align-items-center">
     
@@ -25,26 +25,9 @@
                         </div>
 
                         <div class="card-body" >
-                            <h1 class="text-white text-center card-title" style="align: center ;">Registrate</h1>
-                            <form action="/registro" method="post">
+                            <h1 class="text-white text-center card-title" style="align: center ;">Contactanos</h1>
+                            <form action="/contactoenv" method="post">
 
-                                 <div class="input-group form-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa fa-user"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" name="nombre" id="nombre"
-                                        placeholder="Nombre(s)" value="{{inputData.nombre}}">
-                                </div>
-
-                                <div class="input-group form-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa fa-user-circle"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" name="appPaterno" id="appPaterno"
-                                        placeholder="Apellido Paterno" value="{{inputData.appPaterno}}">
-                                    <input type="text" class="form-control" name="appMaterno" id="appMaterno"
-                                        placeholder="Apellido Materno" value="{{inputData.appMaterno}}">
-                                </div>
                                 <div class="input-group form-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fa fa-envelope"></i></span>
@@ -55,29 +38,26 @@
 
                                 <div class="input-group form-group">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa fa-image"></i></span>
+                                        <span class="input-group-text"><i class="fa fa-user"></i></span>
                                     </div>
-                                    <input type="file" accept=".jpg,.png,." class="form-control" name="rutaFoto" id="rutaFoto" placeholder="Foto de perfil">
+                                    <input type="text" class="form-control" name="telefono" id="telefono"
+                                        placeholder="Telefono" value="{{inputData.telefono}}">
                                 </div>
 
                                 <div class="input-group form-group">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa fa-key"></i></span>
+                                        <span class="input-group-text"><i class="fa fa-user-circle"></i></span>
                                     </div>
-                                    <input type="password" name="contrasena" id="contrasena"
-                                        class="form-control" placeholder="Contraseña" value="">
-                                    <input type="password" name="contrasena2" id="contrasena2"
-                                        class="form-control" placeholder="Confirmar Contraseña" value="">
+                                    <input type="text" class="form-control" name="asunto" id="asunto"
+                                        placeholder="asunto" value="{{inputData.asunto}}">
                                 </div>
+
                                 <div class="input-group form-group">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa fa-address-book"></i></span>
+                                        <span class="input-group-text"><i class="fa fa-user-circle"></i></span>
                                     </div>
-                                  <select name="role" id="role"
-                                        class="form-control" value="{{inputData.role}}">
-                                    <option value="mujer">Mujer</option>
-                                    <option value="hombre">Hombre</option>
-                                </select>
+                                    <textarea type="text" class="form-control" name="mensaje" id="mensaje"
+                                        placeholder="Mensaje" value="{{inputData.mensaje}}"></textarea>
                                 </div>
 
                                 <div class="form-group">
