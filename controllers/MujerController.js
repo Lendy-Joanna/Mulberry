@@ -12,7 +12,7 @@ module.exports = {
             // controlador VerNotificacionesController
             const notificacion = await Notificacion.VerNotificacion(req, res);
             console.log('Welcome Data Sesión ', user);
-            const name = `${utils.capitalize(user.nombre)} ${utils.capitalize(user.appPaterno)}`;
+            const name = `${utils.capitalize(user.nombre)}`;
             res.render('../views/mujer/home', {
                 title: titles.view.home, nombre: name, user, notificacion,
             });
@@ -28,5 +28,8 @@ module.exports = {
     },
     sombrasView(req, res) {
         res.render('../views/mujer/sombras', { title: titles.view.sombras });
+    },
+    comprarView(req, res) {
+        res.render('../views/mujer/comprar', { title: titles.view.comprar });
     },
 };

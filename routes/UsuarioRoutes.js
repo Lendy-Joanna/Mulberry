@@ -1,8 +1,9 @@
-const express = require('express');
+const express = require('express'); 
 
 const router = express.Router();
-const usuarioController = require('../controllers/UsuarioController.js');
+const usuarioController = require('../controllers/UsuarioController'); 
 const recuperar = require('../controllers/RecuperarContrasenaController');
+const modificar = require('../controllers/ModificarUsuarioController');
 const validationRute = require('../middleware/validate-login');
 const validationEmail = require('../middleware/validate-email');
 const validationPass = require('../middleware/validate-contrasenia');
@@ -34,10 +35,12 @@ router.get('/recuperarContrasenia', recuperar.recuperarContrasenia);
 router.post('/recuperar', validationEmail.form, recuperar.recuperarContraseniaToken);
 router.post('/recuperarFinal', validationPass.form, recuperar.recuperarContraseniaCambiar);
 
-
-/* Listado de rutas de rol mujer */
-/* Listado de rutas de rol hombre*/
-/* Listado de rutas de rol admin*/
-
+//Rutas Para Modificar Usuario
+//Hombre
+router.get('/modificar', modificar.modificar);
+router.post('/modificarPost', modificar.modificarPost);
+//Mujer
+router.get('/modifica', modificar.modifica);
+router.post('/modificaPost', modificar.modificaPost); 
 
 module.exports = router;
