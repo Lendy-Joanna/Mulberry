@@ -23,8 +23,8 @@ module.exports = {
     serumsView(req, res) {
         res.render('../views/mujer/serums', { title: titles.view.serums });
     },
-    accesoriosView(req, res) {
-        res.render('../views/mujer/accesorios', { title: titles.view.accesorios });
+    manosView(req, res) {
+        res.render('../views/mujer/manos', { title: titles.view.accesorios });
     },
     sombrasView(req, res) {
         res.render('../views/mujer/sombras', { title: titles.view.sombras });

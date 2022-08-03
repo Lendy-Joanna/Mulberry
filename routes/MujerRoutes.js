@@ -14,7 +14,7 @@ router.get('/cabello', HombreController.cabelloView);
 router.get('/colonias', HombreController.coloniasView);
 router.get('/comp', HombreController.comprarView);
 
-router.get('/accesoriosm', MujerController.accesoriosView);
+router.get('/manos', MujerController.manosView);
 router.get('/sombras', MujerController.sombrasView);
 router.get('/serums', MujerController.serumsView);
 router.get('/compra', MujerController.comprarView);
