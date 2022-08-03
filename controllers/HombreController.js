@@ -32,4 +32,7 @@ module.exports = {
     coloniasView(req, res) {
         res.render('../views/hombre/colonias', { title: titles.view.colonias });
     },
+    comprarView(req, res) {
+        res.render('../views/hombre/comprar', { title: titles.view.comprar });
+    },
 };

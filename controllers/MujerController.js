@@ -29,4 +29,7 @@ module.exports = {
     sombrasView(req, res) {
         res.render('../views/mujer/sombras', { title: titles.view.sombras });
     },
+    comprarView(req, res) {
+        res.render('../views/mujer/comprar', { title: titles.view.comprar });
+    },
 };

@@ -12,10 +12,12 @@ router.get('/accesorios', HombreController.accesoriosView);
 router.get('/skincareh', HombreController.skincareView);
 router.get('/cabello', HombreController.cabelloView);
 router.get('/colonias', HombreController.coloniasView);
+router.get('/comp', HombreController.comprarView);
 
 router.get('/accesoriosm', MujerController.accesoriosView);
 router.get('/sombras', MujerController.sombrasView);
 router.get('/serums', MujerController.serumsView);
+router.get('/compra', MujerController.comprarView);
 
 
 router.post('/checkout', async (req, res)=>{
