@@ -420,7 +420,6 @@ module.exports = {
 
             return res.render('../views/generales/contac',{
                 title: titles.view.contacto,
-                mensaje: titles.mensajes.contactoEnviado,
                 email: newComent.email,
                 telefono: newComent.telefono,
             });

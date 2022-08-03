@@ -5,6 +5,7 @@ const UsuarioController = require('../controllers/UsuarioController');
 const MujerController = require('../controllers/MujerController.js');
 
 router.get('/welcome', MujerController.welcome);
+router.get('/welcomeh', MujerController.welcomeh);
 
 router.post('/checkout', async (req, res)=>{
     const customer = await stripe.customers.create({

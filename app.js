@@ -138,8 +138,6 @@ app.use(async (req, res, next) => {
 app.use('/', usuarioRoutes);
 app.use('/', mujerRoutes);
 
-
-
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
     next(createError(404));

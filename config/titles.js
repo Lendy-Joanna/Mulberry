@@ -4,7 +4,7 @@ module.exports = {
         home: 'Ingreso al sistema',
         index: 'Bienvenido',
         politicas: 'Politicas del sistema',
-        nosotros: ' somos',
+        nosotros: 'Quienes somos',
         contacto: 'Contactanos',
         registro: 'Registro de Usuario',
         maquillaje: 'Productos de belleza',
@@ -63,10 +63,8 @@ module.exports = {
         mensajeLongitudMaxima: 'Se requiere un máximo de 100 carácteres para mensaje',
     },
     mensajes: {
-        correoNoRegistrado: 'El correo no esta registrado!!',
+        correoNoRegistrado: 'Correo incorrecto',
         correoEnviado: 'Correo enviado, Revisa tu Bandeja de entrada',
-        codigoNoValido: 'EL codigo no es Valido o ya expiro',
-        contactoEnviado: 'Mensaje enviado',
-
+        codigoNoValido: 'EL codigo no es válido o ya expiro',
     },
 };
