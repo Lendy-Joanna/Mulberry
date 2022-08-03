@@ -20,4 +20,7 @@ module.exports = {
             res.redirect('/');
         }
     },
+    accesoriosView(req, res) {
+        res.render('../views/hombre/accesorios', { title: titles.view.accesorios });
+    },
 };

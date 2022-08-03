@@ -127,9 +127,6 @@ module.exports = {
     manicuraView(req, res) {
         res.render('../views/generales/manicura', { title: titles.view.manicura });
     },
-    accesoriosView(req, res) {
-        res.render('../views/generales/accesorios', { title: titles.view.accesorios });
-    },
     comprarView(req, res) {
         res.render('../views/generales/comprar', { title: titles.view.comprar });
     },

@@ -3,9 +3,11 @@ const express = require('express');
 const router = express.Router();
 const UsuarioController = require('../controllers/UsuarioController');
 const MujerController = require('../controllers/MujerController.js');
+const HombreController = require('../controllers/HombreController.js');
 
 router.get('/welcome', MujerController.welcome);
-router.get('/welcomeh', MujerController.welcomeh);
+router.get('/welcomeh', HombreController.welcomeh);
+router.get('/accesorios', HombreController.accesoriosView);
 
 router.post('/checkout', async (req, res)=>{
     const customer = await stripe.customers.create({
