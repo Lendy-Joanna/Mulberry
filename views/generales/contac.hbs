@@ -1,18 +1,18 @@
 {{> header}}
 
 <section class="hero hero-bg d-flex justify-content-center align-items-center">
-    
+
     <div class="container">
-{{#if mensaje}}
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        {{#each mensaje}}
-        <div>{{msg}}</div>
-        {{/each}}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    {{/if}}
+        {{#if mensaje}}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{#each mensaje}}
+            <div>{{msg}}</div>
+            {{/each}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {{/if}}
         <div class="row">
 
             <div class="container">
@@ -21,56 +21,65 @@
 
                     <div class="card-group" style="background-color: rgba(0, 0, 0, 0.377);">
                         <div class="card-header">
-                            
+
                         </div>
 
-                        <div class="card-body" >
-                            <h1 class="text-white text-center card-title" style="align: center ;">Contactanos</h1>
-                            <form action="/contactoenv" method="post">
+                        <div class="container-fluid content-box">
+                            <div class="row">
+                                <div class="col ">
+                                    
+                                     <h2 class="title-cart">Contactanos</h2>
+                                 
+                                    <ul class="breadcrumb" style="background-color: rgba(176, 94, 167, 0);">
+                                    </ul>
+                                   
+                                </div>
+                            </div>
+                                <form action="/contactoenv" method="post">
 
-                                <div class="input-group form-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                                    <div class="input-group form-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                                        </div>
+                                        <input type="email" class="form-control" name="email" id="email"
+                                            placeholder="Correo Electrónico" value="{{inputData.email}}">
                                     </div>
-                                    <input type="email" class="form-control" name="email" id="email"
-                                        placeholder="Correo Electrónico" value="{{inputData.email}}">
-                                </div>
 
-                                <div class="input-group form-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                    <div class="input-group form-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" name="telefono" id="telefono"
+                                            placeholder="Telefono" value="{{inputData.telefono}}">
                                     </div>
-                                    <input type="text" class="form-control" name="telefono" id="telefono"
-                                        placeholder="Telefono" value="{{inputData.telefono}}">
-                                </div>
 
-                                <div class="input-group form-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa fa-user-circle"></i></span>
+                                    <div class="input-group form-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-user-circle"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" name="asunto" id="asunto"
+                                            placeholder="asunto" value="{{inputData.asunto}}">
                                     </div>
-                                    <input type="text" class="form-control" name="asunto" id="asunto"
-                                        placeholder="asunto" value="{{inputData.asunto}}">
-                                </div>
 
-                                <div class="input-group form-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa fa-user-circle"></i></span>
+                                    <div class="input-group form-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-user-circle"></i></span>
+                                        </div>
+                                        <textarea type="text" class="form-control" name="mensaje" id="mensaje"
+                                            placeholder="Mensaje" value="{{inputData.mensaje}}"></textarea>
                                     </div>
-                                    <textarea type="text" class="form-control" name="mensaje" id="mensaje"
-                                        placeholder="Mensaje" value="{{inputData.mensaje}}"></textarea>
-                                </div>
 
-                                <div class="form-group">
-                                   <a href="/home" class="btn float-right btn btn-danger">Cancelar</a> 
-                                    <button type="submit" class="btn float-right btn-success">Aceptar</button>
-                                </div>
-                            </form>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn float-right btn-success" style="margin-left: 10px">Aceptar</button>
+                                        <a href="/home" class="btn float-right btn btn-danger" >Cancelar</a>
+                                    </div>
+                                </form>
+                            </div>
+
                         </div>
-
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
-    </div>
 </section>
