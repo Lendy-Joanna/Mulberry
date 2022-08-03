@@ -15,6 +15,10 @@ module.exports = {
         welcome: 'Bienvenido ',
         verCategoria: 'Categorias',
         modificarUsuario: 'Modificar Usuario',
+        cabello:'Productos para el cabello',
+        colonias:'Fragancias',
+        serums:'Cuida de tu piel',
+        sombras:'Luce más radiante',
     },
     error: {
        /// Funcionalidad de Login

@@ -23,4 +23,13 @@ module.exports = {
     accesoriosView(req, res) {
         res.render('../views/hombre/accesorios', { title: titles.view.accesorios });
     },
+    skincareView(req, res) {
+        res.render('../views/hombre/skincare', { title: titles.view.skincare });
+    },
+    cabelloView(req, res) {
+        res.render('../views/hombre/cabello', { title: titles.view.cabello });
+    },
+    coloniasView(req, res) {
+        res.render('../views/hombre/colonias', { title: titles.view.colonias });
+    },
 };
