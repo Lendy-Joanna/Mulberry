@@ -21,7 +21,6 @@ router.post('/contactoenv', validationContacto.form, usuarioController.contactoe
 router.get('/maquillaje', usuarioController.maquillajeView);
 router.get('/skincare', usuarioController.skincareView);
 router.get('/manicura', usuarioController.manicuraView);
-router.get('/accesorios', usuarioController.accesoriosView);
 router.get('/comprar', usuarioController.comprarView);
 
 // Rutas para registro
