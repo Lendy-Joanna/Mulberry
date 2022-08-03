@@ -1,0 +1,8 @@
+# Ignora archivos del sistema No necesarios
+.DS_store
+
+# Ignora todos los archivos de texto
+*.txt
+
+# Ignora archivos de configuración SASS
+.sass-cache
