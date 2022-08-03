@@ -1,0 +1,99 @@
+{{> navbarHombre}}
+
+<style>
+    body {
+      background-image: linear-gradient(-200deg, rgba(0, 105, 123, 0.539) 60%, rgba(115, 4, 30, 0.641) 60%); 
+    }
+</style>
+<br><br><br>
+<section>
+    <div class="container">
+        {{#if mensaje}}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{mensaje}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {{/if}}
+
+        {{#if errors}}
+        {{#each errors}}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ this.msg}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {{/each}}
+        {{/if}}
+        <div class="row">
+
+            <div class="container">
+
+                <div class="d-flex justify-content-center h-100">
+
+                    <div class="card-group" style="background-color: rgba(0, 0, 0, 0.377);">
+                        <div class="card-header">
+                            <h3 class="text-white text-center card-title">Editar Perfil </h3>
+                            <img src="/images/imagenPerfil/{{user.rutaFoto}}" alt="imagen perfil" width="150"
+                                height="170">
+                        </div>
+
+
+                        <div class="card-body">
+                            <form action="/modificarPost?email={{user._id}}" method="post"
+                                enctype="multipart/form-data">
+
+                                <div class="input-group form-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" name="nombre" id="nombre"
+                                        placeholder="Nombre(s)" minlength="3" maxlength="100" value="{{user.nombre}}"
+                                        required>
+                                </div>
+
+                                <div class="input-group form-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-user-circle"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" name="appPaterno" id="appPaterno"
+                                        placeholder="Apellido Paterno" minlength="3" maxlength="100"
+                                        value="{{user.appPaterno}}" required>
+                                    <input type="text" class="form-control" name="appMaterno" id="appMaterno"
+                                        placeholder="Apellido Materno" minlength="3" maxlength="100"
+                                        value="{{user.appMaterno}}" required>
+                                </div>
+
+                                <div class="input-group form-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-envelope-o"></i></span>
+                                    </div>
+                                    <input type="email" class="form-control" name="email" id="email"
+                                        placeholder="Correo Electrónico" value="{{user.email}}" required>
+                                </div>
+
+                                <div class="input-group form-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-image"></i></span>
+                                    </div>
+                                    <input type="file" accept=".jpg,.png,." class="form-control" name="rutaFoto"
+                                        id="rutaFoto" placeholder="Foto de perfil">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <a onclick="history.back()" class="btn float-right btn btn-danger">Regresar</a>
+                                    <button type="submit" class="btn float-right btn-success">Aceptar</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<br><br><br>
